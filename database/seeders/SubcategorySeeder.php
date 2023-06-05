@@ -17,7 +17,8 @@ class SubcategorySeeder extends Seeder
     {
         Subcategories::create([
             'subcategory_name' => 'Arroz y granos',
-            'id_category_fk' => '1']);
+            'id_category_fk' => '1'
+        ]);
         Subcategories::create([
             'subcategory_name' => 'Aceite',
             'id_category_fk' => '1'
@@ -54,6 +55,5 @@ class SubcategorySeeder extends Seeder
             'subcategory_name' => 'Dulces y postres',
             'id_category_fk' => '7'
         ]);
-
     }
 }

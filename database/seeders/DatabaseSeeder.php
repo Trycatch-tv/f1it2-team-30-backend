@@ -26,5 +26,11 @@ class DatabaseSeeder extends Seeder
         $this->call(SubcategorySeeder::class);
         $this->call(StateSeeder::class);
         $this->call(ProductSeeder::class);
+        $this->call(DocumentSeeder::class);
+        $this->call(ProviderSeeder::class);
+        $this->call(TypeMovementSeeder::class);
+        $this->call(BrandSeeder::class);
+        $this->call(MovementSeeder::class);
+
     }
 }
