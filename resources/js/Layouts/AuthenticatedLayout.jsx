@@ -16,7 +16,7 @@ export default function Authenticated({ auth, header, children }) {
           <div className="flex justify-between h-16">
 
             <div className="flex flex-col z-10 ">
-              <div className="shrink-0 flex pb-36">
+              <div className="shrink-0 flex">
                 <Link href="/">
                   <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                 </Link>
