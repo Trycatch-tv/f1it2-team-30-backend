@@ -34,18 +34,22 @@ export default function Login({ status, canResetPassword }) {
         <GuestLayout>
             <Head title="Log in" />
 
-            {status && <div className="mb-4 font-medium text-sm text-green-600">{status}</div>}
+            {status && (
+                <div className="mb-4 text-sm font-medium text-green-600">
+                    {status}
+                </div>
+            )}
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="email" value="Correo" />
 
                     <TextInput
                         id="email"
                         type="email"
                         name="email"
                         value={data.email}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="username"
                         isFocused={true}
                         onChange={handleOnChange}
@@ -55,14 +59,14 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                    <InputLabel htmlFor="password" value="Contraseña" />
 
                     <TextInput
                         id="password"
                         type="password"
                         name="password"
                         value={data.password}
-                        className="mt-1 block w-full"
+                        className="block w-full mt-1"
                         autoComplete="current-password"
                         onChange={handleOnChange}
                     />
@@ -72,23 +76,38 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="block mt-4">
                     <label className="flex items-center">
-                        <Checkbox name="remember" value={data.remember} onChange={handleOnChange} />
-                        <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
+                        <Checkbox
+                            name="remember"
+                            value={data.remember}
+                            onChange={handleOnChange}
+                        />
+                        <span className="mt-2 ml-2 text-sm text-gray-600 dark:text-gray-400">
+                            Recordarme
+                        </span>
                     </label>
+
+                    <span className="ml-1 text-sm text-gray-600 dark:text-gray-400">
+                        <Link
+                            href={route("register")}
+                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
+                        >
+                            No tienes cuenta? Registrate
+                        </Link>
+                    </span>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
                     {canResetPassword && (
                         <Link
-                            href={route('password.request')}
-                            className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                            href={route("password.request")}
+                            className="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                         >
-                            Forgot your password?
+                            Olvidaste tu contraseña?
                         </Link>
                     )}
 
                     <PrimaryButton className="ml-4" disabled={processing}>
-                        Log in
+                        Iniciar sesión
                     </PrimaryButton>
                 </div>
             </form>
