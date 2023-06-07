@@ -10,4 +10,10 @@ class Providers extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+
+    //Relacion inversa uno a muchos Providers-Movements
+    public function movements()
+    {
+        return $this->belongsTo(Movements::class);
+    }
 }
