@@ -36,13 +36,13 @@ export default function Register() {
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="name" value="Nombre" />
+                    <InputLabel htmlFor="name" value="Name" />
 
                     <TextInput
                         id="name"
                         name="name"
                         value={data.name}
-                        className="block w-full mt-1"
+                        className="mt-1 block w-full"
                         autoComplete="name"
                         isFocused={true}
                         onChange={handleOnChange}
@@ -53,14 +53,14 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Correo" />
+                    <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
                         id="email"
                         type="email"
                         name="email"
                         value={data.email}
-                        className="block w-full mt-1"
+                        className="mt-1 block w-full"
                         autoComplete="username"
                         onChange={handleOnChange}
                         required
@@ -70,14 +70,14 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Correo" />
+                    <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
                         id="password"
                         type="password"
                         name="password"
                         value={data.password}
-                        className="block w-full mt-1"
+                        className="mt-1 block w-full"
                         autoComplete="new-password"
                         onChange={handleOnChange}
                         required
@@ -87,14 +87,14 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password_confirmation" value="Confirmar contraseña" />
+                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
 
                     <TextInput
                         id="password_confirmation"
                         type="password"
                         name="password_confirmation"
                         value={data.password_confirmation}
-                        className="block w-full mt-1"
+                        className="mt-1 block w-full"
                         autoComplete="new-password"
                         onChange={handleOnChange}
                         required
@@ -106,9 +106,9 @@ export default function Register() {
                 <div className="flex items-center justify-end mt-4">
                     <Link
                         href={route('login')}
-                        className="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                        className="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                     >
-                        Ya estás registrado? Inicia sesión
+                        Already registered?
                     </Link>
 
                     <PrimaryButton className="ml-4" disabled={processing}>

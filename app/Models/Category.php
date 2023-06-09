@@ -22,4 +22,10 @@ class Category extends Model
 
         return $this->belongsTo(Subcategories::class);
     }
+
+    //Traerme el category_name en lugar del id
+    public function getRouteKeyName()
+    {
+
+    }
 }
