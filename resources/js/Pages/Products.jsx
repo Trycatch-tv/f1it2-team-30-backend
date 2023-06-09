@@ -34,7 +34,7 @@ export default function Inicio(props) {
                 <div className="bg-white grid v-scree place-items-center py-6">
                     <table className="table-auto border border gray-400">
                         <thead>
-                            <tr className="bbg-gray-100">""
+                            <tr className="bbg-gray-100">
                                 <th className="px-2 py-2">SKU</th>
                                 <th className="px-2 py-2">Producto</th>
                                 <th className="px-2 py-2">Presentacion</th>
