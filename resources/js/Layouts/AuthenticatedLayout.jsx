@@ -135,7 +135,7 @@ export default function Authenticated({ auth, header, children }) {
 
         <SideBar />
 
-        <main className='absolute flex flex-col w-full h-full flex-1 pl-64 bg-[#E5F096] rounded-sm'>{children}</main>
+        <main className='absolute flex flex-col w-full h-full flex-1 pl-72 bg-[#E5F096] rounded-sm'>{children}</main>
       </div>
     </div>
   );

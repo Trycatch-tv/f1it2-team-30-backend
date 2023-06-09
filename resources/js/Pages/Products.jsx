@@ -7,10 +7,10 @@ import InputLabel from '@/Components/InputLabel';
 import Modal from '@/Components/Modal';
 import SecondaryButton from '@/Components/SecondaryButton';
 import TextInput from '@/Components/TextInput';
-import { useRef, useState } from 'react';
-import { useForm } from '@inertiajs/react';
+import { useState } from 'react';
+
 import { Head } from '@inertiajs/react';
-import Swal from 'sweetalert2';
+
 
 
 export default function Inicio(props) {
@@ -56,10 +56,10 @@ export default function Inicio(props) {
             </div>
           </div>
         </div>
-        <div className="bg-white grid v-scree place-items-center py-6">
+        <div className="bg-white grid max-w-full mx-auto place-items-center p-6">
           <table className="table-auto border gray-400">
             <thead>
-              <tr className="bbg-gray-100">
+              <tr className="bg-gray-100">
                 <th className="px-2 py-2">#SKU</th>
                 <th className="px-2 py-2">Producto</th>
                 <th className="px-2 py-2">Presentacion</th>
@@ -70,6 +70,7 @@ export default function Inicio(props) {
                 <th className="px-2 py-2">Caducidad</th>
                 <th className="px-2 py-2">Fecha de compra</th>
                 <th className="px-2 py-2">Categoria</th>
+                <th className="px-2 py-2">Acción</th>
               </tr>
             </thead>
           </table>

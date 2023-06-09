@@ -15,7 +15,7 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
                 {...props}
                 type={type}
                 className={
-                    'border-lime-500  dark:bg-[#FDEFCE] dark:text-black focus:border-indigo-200 focus:ring-lime-600  rounded-md shadow-sm ' +
+                    'border-lime-500  dark:bg-[#FDEFCE] dark:text-black focus:border-lime-100             focus:ring-lime-600  rounded-md shadow-sm ' +
                     className
                 }
                 ref={input}
@@ -23,3 +23,5 @@ export default forwardRef(function TextInput({ type = 'text', className = '', is
         </div>
     );
 });
+
+
