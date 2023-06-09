@@ -5,6 +5,7 @@ function Icon() {
     <svg
 
       xmlns="http://www.w3.org/2000/svg"
+      className="text-gray-900"
       width="190"
       height="70"
       viewBox="0 0 817 239"
