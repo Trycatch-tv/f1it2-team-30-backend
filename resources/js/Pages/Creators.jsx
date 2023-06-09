@@ -9,7 +9,7 @@ export default function Inicio(props) {
       <AuthenticatedLayout
         auth={props.auth}
         errors={props.errors}
-        header={<h2 className="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">Creadores</h2>}
+        header={<h2 className="font-semibold text-2xl text-gray-800 dark:text-[#404750] leading-tight">Creadores</h2>}
       >
         <Head title="Creators" />
 

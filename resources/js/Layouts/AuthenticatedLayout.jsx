@@ -10,9 +10,9 @@ export default function Authenticated({ auth, header, children }) {
   const [showingNavigationDropdown, setShowingNavigationDropdown] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900">
-      <nav className="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700 pb-1">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-100 dark:bg-[#FDEFCE]">
+      <nav className="bg-[#FDEFCE] border-b border-gray-100 dark:border-gray-700 pb-1">
+        <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
 
             <div className="flex flex-col z-10 ">
@@ -21,8 +21,6 @@ export default function Authenticated({ auth, header, children }) {
                   <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
                 </Link>
               </div>
-
-
             </div>
 
             <div className="hidden sm:flex sm:items-center sm:ml-6">
@@ -93,6 +91,21 @@ export default function Authenticated({ auth, header, children }) {
             <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
               Dashboard
             </ResponsiveNavLink>
+            <ResponsiveNavLink href={route('products')} active={route().current('products')}>
+              Products
+            </ResponsiveNavLink>
+            <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
+              Categorías
+            </ResponsiveNavLink>
+            <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
+              Tablero de control
+            </ResponsiveNavLink>
+            <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
+              Usuarios
+            </ResponsiveNavLink>
+            <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
+              Creadores
+            </ResponsiveNavLink>
           </div>
 
           <div className="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
@@ -114,15 +127,15 @@ export default function Authenticated({ auth, header, children }) {
       </nav>
 
       {header && (
-        <header className="bg-white dark:bg-gray-800 shadow">
-          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
+        <header className="bg-white dark:bg-[#FDEFCE] text-black shadow pl-[520px]">
+          <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-black">{header}</div>
         </header>
       )}
-      <div className='w-full relative bg-white/25 h-screen max-w-7xl mx-auto'>
+      <div className='w-full relative bg-white/25 h-screen max-w-full mx-auto'>
 
         <SideBar />
 
-        <main className='absolute flex flex-col w-full h-full flex-1 pl-64 '>{children}</main>
+        <main className='absolute flex flex-col w-full h-full flex-1 pl-64 bg-[#E5F096] rounded-sm'>{children}</main>
       </div>
     </div>
   );
