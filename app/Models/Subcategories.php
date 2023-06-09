@@ -10,7 +10,7 @@ class Subcategories extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'subcategory_name'];
 
     //Relaciones entre modelos
 

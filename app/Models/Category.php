@@ -11,7 +11,7 @@ class Category extends Model
 
 
 
-    protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $fillable = ['id', 'category_name', 'created_at'];
 
 
 
@@ -23,9 +23,5 @@ class Category extends Model
         return $this->belongsTo(Subcategories::class);
     }
 
-    //Traerme el category_name en lugar del id
-    public function getRouteKeyName()
-    {
 
-    }
 }

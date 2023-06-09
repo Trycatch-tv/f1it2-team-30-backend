@@ -1,9 +1,6 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -49,31 +46,27 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/products', function () {
-    return Inertia::render('Products');
-})->middleware(['auth', 'verified'])->name('products');
 
-Route::get('/categories', function () {
-    return Inertia::render('Categories');
-})->middleware(['auth', 'verified'])->name('categories');
+
+Route::get('/products', App\Http\Controllers\ProductController::class)
+->middleware(['auth', 'verified'])->name('products');
+
+Route::get('/categories', App\Http\Controllers\CategoryController::class)
+->middleware(['auth', 'verified'])->name('categories');
+
+Route::get('/users', App\Http\Controllers\UserController::class)
+->middleware(['auth', 'verified'])->name('users');
+
+
 
 Route::get('/tablero', function () {
     return Inertia::render('Tablero');
 })->middleware(['auth', 'verified'])->name('tablero');
 
-Route::get('/users', function () {
-    return Inertia::render('Users');
-})->middleware(['auth', 'verified'])->name('users');
 
 Route::get('/creators', function () {
     return Inertia::render('Creators');
 })->middleware(['auth', 'verified'])->name('creators');
 
 
-/*
-Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/creators', [CreatorController::class, 'index']);
-*/
 require __DIR__.'/auth.php';
