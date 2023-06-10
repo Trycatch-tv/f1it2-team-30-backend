@@ -39,14 +39,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 // Rutas sistema despues de loggear
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
-
-
 
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('products');

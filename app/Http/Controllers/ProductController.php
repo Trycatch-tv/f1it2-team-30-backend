@@ -24,10 +24,6 @@ class ProductController extends Controller
         ]);
     }
 
-    public function create()
-    {
-        //
-    }
 
 
     public function store(Request $request)
@@ -37,6 +33,7 @@ class ProductController extends Controller
             'product_name' => 'required | max: 100',
             'product_description' => 'required | max: 100',
             'product_presentation' => 'required | max: 100',
+            'sku' => 'required | max: 100',
             'id_subcategory_fk' => 'required | max: 100',
             'id_state_fk' => 'required | max: 100'
         ]);
@@ -46,16 +43,6 @@ class ProductController extends Controller
     }
 
 
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function edit($id)
-    {
-        //
-    }
 
 
     public function update(Request $request, $id)
