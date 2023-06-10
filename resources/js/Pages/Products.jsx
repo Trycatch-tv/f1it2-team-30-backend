@@ -8,7 +8,7 @@ import Modal from "@/Components/Modal";
 import Select from "@/Components/Select";
 //import Select from "react-select";
 import SecondaryButton from "@/Components/SecondaryButton";
-import TextInput from "@/Components/TextInput";
+import TextInput from "@/Components/TextInput2";
 import { useRef } from "react";
 import { useForm } from "@inertiajs/react";
 import { Head } from "@inertiajs/react";
