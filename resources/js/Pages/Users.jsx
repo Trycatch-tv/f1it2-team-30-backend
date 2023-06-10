@@ -5,43 +5,58 @@ import { Head } from '@inertiajs/react';
 
 export default function Inicio(props) {
   return (
-    <>
-      <AuthenticatedLayout
-        auth={props.auth}
-        errors={props.errors}
-        header={<h2 className="font-semibold text-2xl text-gray-800 dark:text-[#404750] leading-tight">Lista de Usuario</h2>}
-      >
-        <Head title="Users" />
+      <>
+          <AuthenticatedLayout
+              auth={props.auth}
+              errors={props.errors}
+              header={
+                  <h2 className="font-semibold text-2xl text-gray-800 dark:text-[#404750] leading-tight">
+                      Lista de Usuario
+                  </h2>
+              }
+          >
+              <Head title="Users" />
 
-        <div className="py-12">
-          <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div className="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-              <div className="p-6 text-gray-900 dark:text-gray-100">Usuarios ...
-                <table className='bg-gray-100 place.items-center py-6'>
-                  <thead>
-                    <tr className='bg-gray-100'>
-                      <th className='border border-gray-400 px-2 py-2'>Nombre</th>
-                      <th className='border border-gray-400 px-2 py-2'>Cargo</th>
-                      <th className='border border-gray-400 px-2 py-2'>Fecha de ingreso</th>
-                      <th className='border border-gray-400 px-2 py-2'>Estado</th>
-                      <th className='border border-gray-400 px-2 py-2'>Fecha actualizacion</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className='border border-gray-400 px-2 py-2'>Paula Leal</td>
-                      <td className='border border-gray-400 px-2 py-2'>Administradora</td>
-                      <td className='border border-gray-400 px-2 py-2'>2020/01/03</td>
-                      <td className='border border-gray-400 px-2 py-2'>Activo</td>
-                      <td className='border border-gray-400 px-2 py-2'>2022/09/10</td>
-                    </tr>
-                  </tbody>
-                </table>
+              <div className="py-12">
+                  <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
+                      <div className="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+                          <div className="p-6 text-gray-900 dark:text-gray-100">
+                              Lista de usuarios
+                              <table className="border table-auto gray-400">
+                                  <thead>
+                                      <tr className="bbg-gray-100">
+                                          <th className="px-2 py-2 border border-gray-400">
+                                              Id
+                                          </th>
+                                          <th className="px-2 py-2 border border-gray-400">
+                                              Nombre de Usuario
+                                          </th>
+                                          <th className="px-2 py-2 border border-gray-400">
+                                              Correo Electronico
+                                          </th>
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {props.users.map((users, i) => (
+                                          <tr key={users.id}>
+                                              <td className="px-2 py-2 border border-gray-400">
+                                                  {i + 1}
+                                              </td>
+                                              <td className="px-2 py-2 border border-gray-400">
+                                                  {users.full_name}
+                                              </td>
+                                              <td className="px-2 py-2 border border-gray-400">
+                                                  {users.user_email}
+                                              </td>
+                                          </tr>
+                                      ))}
+                                  </tbody>
+                              </table>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </AuthenticatedLayout>
-    </>
+          </AuthenticatedLayout>
+      </>
   );
 }
