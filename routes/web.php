@@ -48,7 +48,7 @@ Route::get('/dashboard', function () {
 
 
 
-Route::get('/products', App\Http\Controllers\ProductController::class)
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])
 ->middleware(['auth', 'verified'])->name('products');
 
 Route::get('/categories', App\Http\Controllers\CategoryController::class)
