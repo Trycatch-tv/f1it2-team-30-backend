@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Products extends Model
 {
     use HasFactory;
-    protected $fillable = ['id', 'product_name', 'product_presentation', 'sku', 'id_subcategory_fk'];
+    protected $fillable = ['product_name','product_description','product_presentation','sku','id_subcategory_fk','id_state_fk'];
 
     //Relaciones entre modelos
 

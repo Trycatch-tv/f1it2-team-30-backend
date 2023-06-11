@@ -2,33 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
-use App\Models\Products;
-use App\Models\Movements;
-
 class ProductController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $products = Products::all();
-        //$movements = Movements::all();
-        return Inertia::render('Products', [
-            'products' => $products,
-            //'movements' => $movements,
-        ]);
+        return Inertia::render('Products', ['products' => $products]);
     }
-
 
 
     public function store(Request $request)
     {
-
         $request->validate([
             'product_name' => 'required | max: 100',
             'product_description' => 'required | max: 100',
@@ -39,25 +26,21 @@ class ProductController extends Controller
         ]);
         $products = new Products($request->input());
         $products->save();
-        return redirect('Products');
+        return redirect('products');
     }
-
-
 
 
     public function update(Request $request, $id)
     {
         $products = Products::find($id);
         $products->fill($request->input())->saveOrFail();
-        return redirect('Products');
+        return redirect('products');
     }
-
 
     public function destroy($id)
     {
         $products = Products::find($id);
         $products->delete();
-        return redirect('Products');
-
+        return redirect('products');
     }
 }

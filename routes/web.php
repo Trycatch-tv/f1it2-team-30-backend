@@ -29,9 +29,6 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/inicio', function () {
-    return Inertia::render('inicio');
-});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,12 +38,19 @@ Route::middleware('auth')->group(function () {
 
 // Rutas sistema despues de loggear
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])
-->middleware(['auth', 'verified'])->name('products');
+->middleware(['auth', 'verified'])->name('index');
+
+Route::post('/products', [App\Http\Controllers\ProductController::class, 'store'])
+->middleware(['auth', 'verified'])->name('products.store');
+
+Route::put('/products/{product}', [App\Http\Controllers\ProductController::class, 'update'])
+->middleware(['auth', 'verified'])->name('products.update');
+
+Route::delete('/products/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])
+->middleware(['auth', 'verified'])->name('products.destroy');
+
 
 Route::get('/categories', App\Http\Controllers\CategoryController::class)
 ->middleware(['auth', 'verified'])->name('categories');

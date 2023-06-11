@@ -1,22 +1,22 @@
-import React, { useState } from "react";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import PrimaryButton from "@/Components/PrimaryButton";
-import DangerButton from "@/Components/DangerButton";
-import InputError from "@/Components/InputError";
-import InputLabel from "@/Components/InputLabel";
-import Modal from "@/Components/Modal";
-import Select from "@/Components/Select";
-//import Select from "react-select";
-import SecondaryButton from "@/Components/SecondaryButton";
-import TextInput from "@/Components/TextInput2";
-import { useRef } from "react";
-import { useForm } from "@inertiajs/react";
-import { Head } from "@inertiajs/react";
-import Swal from "sweetalert2";
+import React, { useState } from 'react';
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
+import PrimaryButton from '@/Components/PrimaryButton';
+import DangerButton from '@/Components/DangerButton';
+import InputError from '@/Components/InputError';
+import InputLabel from '@/Components/InputLabel';
+import Modal from '@/Components/Modal';
+import Select from '@/Components/Select';
+//import Select from 'react-select';
+import SecondaryButton from '@/Components/SecondaryButton';
+import TextInput from '@/Components/TextInput2';
+import { useRef } from 'react';
+import { useForm } from '@inertiajs/react';
+import { Head } from '@inertiajs/react';
+import Swal from 'sweetalert2';
 
 export default function Inicio(props) {
     const [modal, setModal] = useState(false);
-    const [title, setTitle] = useState("");
+    const [title, setTitle] = useState('');
     const [operation, setOperation] = useState(1);
     const product_nameInput = useRef();
     const product_descriptionInput = useRef();
@@ -24,131 +24,82 @@ export default function Inicio(props) {
     const skuInput = useRef();
     const id_subcategory_fkInput = useRef();
     const id_state_fkInput = useRef();
-    const {
-        data,
-        setData,
-        deletete: destroy,
-        post,
-        put,
-        processing,
-        reset,
-        errors,
-    } = useForm({
-        id: "",
-        product_name: "",
-        product_description: "",
-        product_presentation: "",
-        sku: "",
-        id_subcategory_fk: "",
-        id_state_fk: "",
-        created_at: "",
-        updated_at: ""
-    });
-    const openModal = (
-        op,
-        id,
-        product_name,
-        product_description,
-        product_presentation,
-        sku,
-        id_subcategory_fk,
-        id_state_fk,
-        created_at,
-        updated_at
-    ) => {
+    const {data,setData,deletete: destroy,post,put,
+        processing,reset,errors} = useForm({
+            id: '',product_name: '',product_description: '',product_presentation: '',sku: '',id_subcategory_fk: '',id_state_fk: '',created_at: '',updated_at: ''});
+    const openModal = (op,id,product_name,product_description,product_presentation,sku,id_subcategory_fk,id_state_fk,created_at,updated_at) => {
         setModal(true);
         setOperation(op);
-        setData({
-            product_name: '',
-            product_description: '',
-            product_presentation: '',
-            sku: '',
-            id_subcategory_fk: '',
-            id_state_fk: '',
-        });
+        setData({product_name:'',product_description:'',product_presentation:'',sku:'',id_subcategory_fk:'',id_state_fk:''});
         if (op == 1) {
-            setTitle("Nuevo Producto");
+            setTitle('Añadir producto');
         } else {
-            setTitle("Editar Producto");
-            setData({
-                id: id,
-                product_name: product_name,
-                product_description: product_description,
-                product_presentation: product_presentation,
-                sku: sku,
-                id_subcategory_fk: id_subcategory_fk,
-                id_state_fk: id_state_fk,
-                created_at: created_at,
-                updated_at: updated_at,
-            });
+            setTitle('Editar producto');
+            setData({id:id,product_name:product_name,product_description:product_description,product_presentation:product_presentation,sku:sku,id_subcategory_fk:id_subcategory_fk,id_state_fk:id_state_fk,created_at:created_at,updated_at:updated_at});
         }
     };
     const closeModal = () => {
         setModal(false);
     };
 
-    const save = (e) => {
+    const save = (e) =>{
         e.preventDefault();
-        if (operation === 1) {
-            post(route("store"), {
-                onSuccess: () => {
-                    ok("Producto guardado");
-                },
+        if(operation === 1){
+            post(route('products.store'),{
+                onSuccess: () => { ok('Producto guardado')},
                 onError: () => {
-                    if (errors.product_name) {
-                        reset("product_name");
+                    if(errors.product_name){
+                        reset('product_name');
                         product_nameInput.current.focus();
                     }
-                    if (errors.product_description) {
-                        reset("product_description");
+                    if(errors.product_description){
+                        reset('product_description');
                         product_descriptionInput.current.focus();
                     }
-                    if (errors.product_presentation) {
-                        reset("product_presentation");
+                    if(errors.product_presentation){
+                        reset('product_presentation');
                         product_presentationInput.current.focus();
                     }
-                    if (errors.sku) {
-                        reset("sku");
+                    if(errors.sku){
+                        reset('sku');
                         skuInput.current.focus();
                     }
-                    if (errors.id_subcategory_fk) {
-                        reset("id_subcategory_fk");
+                    if(errors.id_subcategory_fk){
+                        reset('id_subcategory_fk');
                         id_subcategory_fkInput.current.focus();
                     }
-                    if (errors.id_state_fk) {
-                        reset("id_state_fk");
+                    if(errors.id_state_fk){
+                        reset('id_state_fk');
                         id_state_fkInput.current.focus();
                     }
                 },
             });
         } else {
-            put(route("products.update", data.id), {
-                onSuccess: () => {
-                    ok("Producto modificado");
-                },
+           put(route('products.update',data.id),{
+                onSuccess: () => { ok('Producto modificado')},
                 onError: () => {
-                    if (errors.product_name) {
-                        reset("product_name");
+                    if(errors.product_name){
+                        reset('product_name');
                         product_nameInput.current.focus();
                     }
-                    if (errors.product_description) {
-                        reset("product_description");
+                    if(errors.product_description){
+                        reset('product_description');
                         product_descriptionInput.current.focus();
                     }
-                    if (errors.product_presentation) {
-                        reset("product_presentation");
+                    if(errors.product_presentation){
+                        reset('product_presentation');
                         product_presentationInput.current.focus();
                     }
-                    if (errors.sku) {
-                        reset("sku");
+                    if(errors.sku){
+                        reset('sku');
                         skuInput.current.focus();
                     }
-                    if (errors.id_subcategory_fk) {
-                        reset("id_subcategory_fk");
+                    if(errors.id_subcategory_fk){
+                        reset('id_subcategory_fk');
                         id_subcategory_fkInput.current.focus();
                     }
-                    if (errors.id_state_fk) {
-                        reset("id_state_fk");
+                    if(errors.id_state_fk){
+                        reset('id_state_fk');
                         id_state_fkInput.current.focus();
                     }
                 },
@@ -158,15 +109,15 @@ export default function Inicio(props) {
     const ok = (mensaje) => {
         reset();
         closeModal();
-        Swal.fire({ title: mensaje, icon: "success" });
+        Swal.fire({ title: mensaje, icon: 'success' });
     };
     const eliminar = (id, name) => {
         const alerta = Swal.mixin({ buttonsStyling: true });
         alerta
             .fire({
-                title: "Seguro de eliminar el producto " + name,
-                text: "Se perderá el producto",
-                icon: "question",
+                title: 'Seguro de eliminar el producto ' + name,
+                text: 'Se perderá el producto',
+                icon: 'question',
                 showCancelButton: true,
                 confirmButtonText:
                     '<i class="fa-solid fa-check"></i> Si, eliminar',
@@ -174,9 +125,9 @@ export default function Inicio(props) {
             })
             .then((result) => {
                 if (result.isConfirmed) {
-                    destroy(route("products.destroy", id), {
+                    destroy(route('products.destroy', id), {
                         onSuccess: () => {
-                            ok("Producto eliminado");
+                            ok('Producto eliminado');
                         },
                     });
                 }
@@ -200,38 +151,38 @@ export default function Inicio(props) {
                     <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                         <div className="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
                             <PrimaryButton
-                                className="m-2"
+                                className='m-2'
                                 onClick={() => openModal(1)}
                             >
-                                <i className="fa-solid fa-plus-circle"></i>
+                                <i className='fa-solid fa-plus-circle'></i>
                                 Añadir
                             </PrimaryButton>
-                            <div className="p-6 text-gray-900 dark:text-gray-100">
-                                <table className="border table-auto gray-400">
+                            <div className='p-6 text-gray-900 dark:text-gray-100'>
+                                <table className='border table-auto gray-400'>
                                     <thead>
-                                        <tr className="bbg-gray-100">
-                                            <th className="px-2 py-2 border border-gray-400">
+                                        <tr className='bbg-gray-100'>
+                                            <th className='px-2 py-2 border border-gray-400'>
                                                 Id
                                             </th>
-                                            <th className="px-2 py-2 border border-gray-400">
+                                            <th className='px-2 py-2 border border-gray-400'>
                                                 Nombre Producto
                                             </th>
-                                            <th className="px-2 py-2 border border-gray-400">
+                                            <th className='px-2 py-2 border border-gray-400'>
                                                 Descripción
                                             </th>
-                                            <th className="px-2 py-2 border border-gray-400">
+                                            <th className='px-2 py-2 border border-gray-400'>
                                                 Presentacion
                                             </th>
-                                            <th className="px-2 py-2 border border-gray-400">
+                                            <th className='px-2 py-2 border border-gray-400'>
                                                 Sku
                                             </th>
-                                            <th className="px-2 py-2 border border-gray-400">
+                                            <th className='px-2 py-2 border border-gray-400'>
                                                 Subcategoría
                                             </th>
-                                            <th className="px-2 py-2 border border-gray-400">
+                                            <th className='px-2 py-2 border border-gray-400'>
                                                 Estado
                                             </th>
-                                            <th className="px-2 py-2 border border-gray-400">
+                                            <th className='px-2 py-2 border border-gray-400'>
                                                 Acciones
                                             </th>
                                         </tr>
@@ -239,35 +190,35 @@ export default function Inicio(props) {
                                     <tbody>
                                         {props.products.map((products, i) => (
                                             <tr key={products.id}>
-                                                <td className="px-2 py-2 border border-gray-400">
+                                                <td className='px-2 py-2 border border-gray-400'>
                                                     {i + 1}
                                                 </td>
-                                                <td className="px-2 py-2 border border-gray-400">
+                                                <td className='px-2 py-2 border border-gray-400'>
                                                     {products.product_name}
                                                 </td>
-                                                <td className="px-2 py-2 border border-gray-400">
+                                                <td className='px-2 py-2 border border-gray-400'>
                                                     {
                                                         products.product_description
                                                     }
                                                 </td>
-                                                <td className="px-2 py-2 border border-gray-400">
+                                                <td className='px-2 py-2 border border-gray-400'>
                                                     {
                                                         products.product_presentation
                                                     }
                                                 </td>
-                                                <td className="px-2 py-2 border border-gray-400">
+                                                <td className='px-2 py-2 border border-gray-400'>
                                                     {products.sku}
                                                 </td>
-                                                <td className="px-2 py-2 border border-gray-400">
+                                                <td className='px-2 py-2 border border-gray-400'>
                                                     {products.id_subcategory_fk}
                                                 </td>
-                                                <td className="px-2 py-2 border border-gray-400">
+                                                <td className='px-2 py-2 border border-gray-400'>
                                                     {products.id_state_fk}
                                                 </td>
 
-                                                <td className="px-2 py-2 border border-gray-400">
+                                                <td className='px-2 py-2 border border-gray-400'>
                                                     <PrimaryButton
-                                                        className="m-1"
+                                                        className='m-1'
                                                         onClick={() =>
                                                             openModal(
                                                                 2,
@@ -283,7 +234,7 @@ export default function Inicio(props) {
                                                             )
                                                         }
                                                     >
-                                                        <i className="fa-solid fa-plus-circle"></i>
+                                                        <i className='fa-solid fa-plus-circle'></i>
                                                         Editar
                                                     </PrimaryButton>
                                                     <DangerButton
@@ -301,7 +252,7 @@ export default function Inicio(props) {
                                                             )
                                                         }
                                                     >
-                                                        <i className="fa-solid fa-trash"></i>
+                                                        <i className='fa-solid fa-trash'></i>
                                                         Borrar
                                                     </DangerButton>
                                                 </td>
@@ -318,7 +269,7 @@ export default function Inicio(props) {
                                     <div className="flex justify-center gap-10">
                                         <div className="text-gray-900 w-60">
                                             <div className="mt-3 text-gray-900">
-                                                <div className="mt-3">
+                                                <div className='mt-3'>
                                                     <InputLabel
                                                         for="product_name"
                                                         value="Nombre de Producto"
@@ -331,10 +282,10 @@ export default function Inicio(props) {
                                                         value={
                                                             data.product_name
                                                         }
-                                                        required="required"
+                                                        required='required'
                                                         handleChange={(e) =>
                                                             setData(
-                                                                "product_name",
+                                                                'product_name',
                                                                 e.target.value
                                                             )
                                                         }
@@ -349,8 +300,8 @@ export default function Inicio(props) {
                                                     ></InputError>
                                                 </div>
                                             </div>
-                                            <div className="mt-3">
-                                                <div className="mt-3">
+                                            <div className='mt-3'>
+                                                <div className='mt-3'>
                                                     <InputLabel
                                                         for="product_description"
                                                         value="Descripción de Producto"
@@ -365,10 +316,10 @@ export default function Inicio(props) {
                                                         value={
                                                             data.product_description
                                                         }
-                                                        required="required"
+                                                        required='required'
                                                         handleChange={(e) =>
                                                             setData(
-                                                                "product_description",
+                                                                'product_description',
                                                                 e.target.value
                                                             )
                                                         }
@@ -383,7 +334,7 @@ export default function Inicio(props) {
                                                     ></InputError>
                                                 </div>
                                             </div>
-                                            <div className="mt-3">
+                                            <div className='mt-3'>
                                                 <InputLabel
                                                     for="sku"
                                                     value="SKU"
@@ -394,10 +345,10 @@ export default function Inicio(props) {
                                                     name="sku"
                                                     ref={skuInput}
                                                     value={data.sku}
-                                                    required="required"
+                                                    required='required'
                                                     handleChange={(e) =>
                                                         setData(
-                                                            "sku",
+                                                            'sku',
                                                             e.target.value
                                                         )
                                                     }
@@ -412,7 +363,7 @@ export default function Inicio(props) {
                                         </div>
 
                                         <div className="w-96">
-                                            <div className="mt-3">
+                                            <div className='mt-3'>
                                                 <InputLabel
                                                     for="product_presentation"
                                                     value="Presentación de producto"
@@ -427,10 +378,10 @@ export default function Inicio(props) {
                                                     value={
                                                         data.product_presentation
                                                     }
-                                                    required="required"
+                                                    required='required'
                                                     handleChange={(e) =>
                                                         setData(
-                                                            "product_presentation",
+                                                            'product_presentation',
                                                             e.target.value
                                                         )
                                                     }
@@ -456,25 +407,25 @@ export default function Inicio(props) {
                                                     value={
                                                         data.id_subcategory_fk
                                                     }
-                                                    required="required"
+                                                    required='required'
                                                     handleChange={(e) =>
                                                         setData(
-                                                            "id_subcategory_fk",
+                                                            'id_subcategory_fk',
                                                             e.target.value
                                                         )
                                                     }
                                                     className="block w-full mt-1"
                                                     options={[
-                                                        "Arroz y granos",
-                                                        "Aceite",
-                                                        "Leche",
-                                                        "Huevos",
-                                                        "Hortalizas",
-                                                        "Frutas",
-                                                        "Pescados y Mariscos",
-                                                        "Carne Res",
-                                                        "Panadería Artesanal",
-                                                        "Dulces y postres",
+                                                        'Arroz y granos',
+                                                        'Aceite',
+                                                        'Leche',
+                                                        'Huevos',
+                                                        'Hortalizas',
+                                                        'Frutas',
+                                                        'Pescados y Mariscos',
+                                                        'Carne Res',
+                                                        'Panadería Artesanal',
+                                                        'Dulces y postres',
                                                     ]}
                                                 ></Select>
                                                 <InputError
@@ -484,7 +435,7 @@ export default function Inicio(props) {
                                                     classNamemt-2
                                                 ></InputError>
                                             </div>
-                                            <div className="mt-3">
+                                            <div className='mt-3'>
                                                 <InputLabel
                                                     for="id_state_fk "
                                                     value="Estado"
@@ -494,17 +445,17 @@ export default function Inicio(props) {
                                                     name="id_state_fk"
                                                     ref={id_state_fkInput}
                                                     value={data.id_state_fk}
-                                                    required="required"
+                                                    required='required'
                                                     handleChange={(e) =>
                                                         setData(
-                                                            "id_state_fk",
+                                                            'id_state_fk',
                                                             e.target.value
                                                         )
                                                     }
                                                     className="block w-full mt-1"
                                                     options={[
-                                                        "Activo",
-                                                        "Inactivo",
+                                                        'Activo',
+                                                        'Inactivo',
                                                     ]}
                                                 ></Select>
                                                 <InputError
