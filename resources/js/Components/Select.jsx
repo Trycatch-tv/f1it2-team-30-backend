@@ -2,7 +2,7 @@ import { forwardRef, useEffect, useRef } from "react";
 
 export default forwardRef(function TextInput(
     {
-        type = "text",
+        options = null,
         name,
         id,
         value,
@@ -24,20 +24,25 @@ export default forwardRef(function TextInput(
 
     return (
         <div className="flex flex-col items-start">
-            <input
-                type={type}
+            <select
                 name={name}
                 id={id}
                 value={value}
                 className={
-                    "border-lime-500  dark:bg-[#FDEFCE] dark:text-black focus:border-indigo-200 focus:ring-lime-600  rounded-md shadow-sm " +
+                    `border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm ` +
                     className
                 }
                 ref={input}
                 autoComplete={autoComplete}
                 required={required}
                 onChange={(e) => handleChange(e)}
-            />
+            >
+                {options.map((option) => (
+                    <option value={option} key={option}>
+                        {option}
+                    </option>
+                ))}
+            </select>
         </div>
     );
 });

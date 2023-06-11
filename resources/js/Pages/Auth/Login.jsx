@@ -9,7 +9,7 @@ import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
-        email: '',
+        user_email: '',
         password: '',
         remember: '',
     });
@@ -34,20 +34,16 @@ export default function Login({ status, canResetPassword }) {
         <GuestLayout>
             <Head title="Log in" />
 
-            {status && (
-                <div className="mb-4 text-sm font-medium text-green-600">
-                    {status}
-                </div>
-            )}
+            {status && <div className="mb-4 text-sm font-medium text-green-600">{status}</div>}
 
             <form onSubmit={submit}>
                 <div>
-                    <InputLabel htmlFor="email" value="Correo" />
+                    <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
-                        id="email"
+                        id="user_email"
                         type="email"
-                        name="email"
+                        name="user_email"
                         value={data.email}
                         className="block w-full mt-1"
                         autoComplete="username"
@@ -59,7 +55,7 @@ export default function Login({ status, canResetPassword }) {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Contraseña" />
+                    <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
                         id="password"
@@ -76,38 +72,23 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="block mt-4">
                     <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            value={data.remember}
-                            onChange={handleOnChange}
-                        />
-                        <span className="mt-2 ml-2 text-sm text-gray-600 dark:text-gray-400">
-                            Recordarme
-                        </span>
+                        <Checkbox name="remember" value={data.remember} onChange={handleOnChange} />
+                        <span className="ml-2 text-sm text-gray-600 dark:text-gray-400">Remember me</span>
                     </label>
-
-                    <span className="ml-1 text-sm text-gray-600 dark:text-gray-400">
-                        <Link
-                            href={route("register")}
-                            className="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500"
-                        >
-                            No tienes cuenta? Registrate
-                        </Link>
-                    </span>
                 </div>
 
                 <div className="flex items-center justify-end mt-4">
                     {canResetPassword && (
                         <Link
-                            href={route("password.request")}
+                            href={route('password.request')}
                             className="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
                         >
-                            Olvidaste tu contraseña?
+                            Recuerda tu contraseña?
                         </Link>
                     )}
 
                     <PrimaryButton className="ml-4" disabled={processing}>
-                        Iniciar sesión
+                        Log in
                     </PrimaryButton>
                 </div>
             </form>

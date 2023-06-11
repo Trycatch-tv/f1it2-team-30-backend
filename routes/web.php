@@ -39,4 +39,31 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+// Rutas sistema despues de loggear
+
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])
+->middleware(['auth', 'verified'])->name('products');
+
+Route::get('/categories', App\Http\Controllers\CategoryController::class)
+->middleware(['auth', 'verified'])->name('categories');
+
+Route::get('/users', App\Http\Controllers\UserController::class)
+->middleware(['auth', 'verified'])->name('users');
+
+
+
+Route::get('/tablero', function () {
+    return Inertia::render('Tablero');
+})->middleware(['auth', 'verified'])->name('tablero');
+
+
+Route::get('/creators', function () {
+    return Inertia::render('Creators');
+})->middleware(['auth', 'verified'])->name('creators');
+
+
 require __DIR__.'/auth.php';
