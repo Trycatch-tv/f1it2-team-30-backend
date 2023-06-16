@@ -41,4 +41,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Relacion inversa uno a muchos Products-Users
+    public function products()
+    {
+        return $this->belongsTo(Products::class);
+    }
 }

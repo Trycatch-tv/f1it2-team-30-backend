@@ -18,26 +18,26 @@ return new class extends Migration
             $table->string('product_name');
             $table->string('product_presentation');
 
-             $table->unsignedBigInteger('id_brand_fke')->nullable();
-            $table->foreign('id_brand_fke')
+             $table->unsignedBigInteger('id_brand_fk')->nullable();
+            $table->foreign('id_brand_fk')
             ->references('id')
             ->on('brands')
             ->onDelete('cascade');
 
-            $table->unsignedBigInteger('id_category_fke')->nullable();
-            $table->foreign('id_category_fke')
+            $table->unsignedBigInteger('id_category_fk')->nullable();
+            $table->foreign('id_category_fk')
             ->references('id')
             ->on('categories')
             ->onDelete('cascade');
 
-            $table->unsignedBigInteger('id_provider_fke')->nullable();
-            $table->foreign('id_provider_fke')
+            $table->unsignedBigInteger('id_provider_fk')->nullable();
+            $table->foreign('id_provider_fk')
             ->references('id')
             ->on('providers')
             ->onDelete('cascade');
 
-            $table->unsignedBigInteger('id_user_fke')->nullable();
-            $table->foreign('id_user_fke')
+            $table->unsignedBigInteger('id_user_fk')->nullable();
+            $table->foreign('id_user_fk')
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
