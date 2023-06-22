@@ -13,24 +13,24 @@ class Products extends Model
     //Relación uno a muchos entre Products-Brands
     public function brands()
     {
-        return $this->hasMany(Brands::class, 'id_brand_fk', 'id');
+        return $this->hasMany(Brands::class);
     }
 
     //Relación uno a muchos entre Products-Category
     public function category()
     {
-        return $this->hasMany(Category::class, 'id_category_fk', 'id');
+        return $this->hasMany(Category::class);
     }
 
     //Relación uno a muchos entre Products-Providers
     public function providers()
     {
-        return $this->hasMany(Providers::class, 'id_provider_fk', 'id');
+        return $this->hasMany(Providers::class);
     }
 
     //Relación uno a muchos entre Products-Users
     public function user()
     {
-        return $this->hasMany(User::class, 'id_user_fk', 'id');
+        return $this->hasMany(User::class);
     }
 }
