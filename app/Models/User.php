@@ -45,6 +45,6 @@ class User extends Authenticatable
     //Relacion inversa uno a muchos Products-Users
     public function products()
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Products::class, 'id_user_fk');
     }
 }

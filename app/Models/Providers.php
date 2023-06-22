@@ -13,7 +13,7 @@ class Providers extends Model
     //Relacion inversa uno a muchos Products-Providers
     public function products()
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Products::class, 'id_provider_fk');
     }
 
 }

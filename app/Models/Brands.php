@@ -14,6 +14,6 @@ class Brands extends Model
     //Relacion inversa uno a muchos Products-Brands
     public function products()
     {
-        return $this->belongsTo(Products::class);
+        return $this->belongsTo(Products::class, 'id_brand_fk');
     }
 }
